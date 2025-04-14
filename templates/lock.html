@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Texas Veda Financial</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+    }
+
+    .left, .right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .left {
+      background-color: #f4f4f4;
+      flex-direction: column;
+    }
+
+    .form-container {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .form-container h1 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    form input {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    form button {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #3d7e9a;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+
+    .right {
+      background: url('https://source.unsplash.com/800x600/?nature,calm') no-repeat center center;
+      background-size: cover;
+      color: white;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .right h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .right p {
+      font-size: 1.2rem;
+      max-width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div class="left">
+    <div class="form-container">
+      <h1>Welcome to Serenity Bank</h1>
+      <h2>Create an Account</h2>
+      <form method="POST">
+        <input type="text" name="username" placeholder="Username" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <input type="text" name="vin" placeholder="Vehicle VIN" required />
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+  <div class="right">
+    <p>Secure. Simple. Smart banking — where your peace of mind is our priority.</p>
+  </div>
+</body>
+</html>
