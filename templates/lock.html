@@ -37,7 +37,8 @@
 
     .form-container h1 {
       margin-bottom: 1rem;
-      font-size: 2rem;
+      font-size: 4rem;
+      padding: 1rem;
     }
 
     form input {
@@ -60,42 +61,46 @@
     }
 
     .right {
-      background: url('https://source.unsplash.com/800x600/?nature,calm') no-repeat center center;
-      background-size: cover;
+      background: url('https://www.robgreebonphotography.com/images/xl/Austin-Texas-Skyline-Autumn-Sunset-3.jpg') no-repeat center center;
+      background-size: 315%;
       color: white;
       text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
       flex-direction: column;
-      justify-content: center;
       text-align: center;
       padding: 2rem;
+      display: flex;
+      align-items: center;     /* or flex-start if you want it left-aligned */
+      justify-content: flex-start;  /* moves content to the top */
+      padding-top: 8rem; 
     }
 
-    .right h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
 
     .right p {
-      font-size: 1.2rem;
-      max-width: 300px;
+        font-size: 2.2rem;
+        max-width: 700px;
+        font-family: 'Segoe UI', sans-serif;
+        font-weight: 600;
+        color: #ffffff;
+        letter-spacing: 1.5px;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        padding: 0.5rem 1rem;
     }
   </style>
 </head>
 <body>
   <div class="left">
     <div class="form-container">
-      <h1>Welcome to Serenity Bank</h1>
-      <h2>Create an Account</h2>
+      <h1>Welcome to Texas Veda Financial</h1>
+      <h2>Sign In</h2>
       <form method="POST">
-        <input type="text" name="username" placeholder="Username" required />
-        <input type="password" name="password" placeholder="Password" required />
-        <input type="text" name="vin" placeholder="Vehicle VIN" required />
-        <button type="submit">Register</button>
+        <input type="text" name="acountNum" placeholder="Account Number" required />
+        <input type="pin" name="pin" placeholder="Pin" required />
+        <button type="submit">Sign In</button>
       </form>
     </div>
   </div>
   <div class="right">
-    <p>Secure. Simple. Smart banking — where your peace of mind is our priority.</p>
+    <p>SMART, SIMPLE, SECURE</p>
   </div>
 </body>
 </html>
