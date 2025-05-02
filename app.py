@@ -20,6 +20,16 @@ class User(db.Model):
 def lock():
     return render_template('lock.html')
 
+@app.route('/dashboard', methods=['POST'])
+def dashboard():
+    account_num = request.form.get('account_num')
+    pin = request.form.get('pin')
+
+    if account_num == "12345" and pin == "6789":
+        return render_template('dashboard.html')
+    else:
+        return render_template('lock.html', error="Invalid account number or PIN")
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
