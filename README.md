@@ -38,4 +38,9 @@ Texas Veda Financial is a simple banking system that allows users to manage thei
 1. **Clone the Repository**:
    ```bash
    git clone <repository-url>
-   cd banking
+2. **Import Files**:
+    ```bash
+   pip install flask_sqlalchemy
+3. **Run the Repository**:
+    ```bash
+   python app.py
