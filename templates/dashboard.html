@@ -1,11 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #f0f4f8; /* Light blue-gray background for a professional look */
+      color: #333;
+    }
+
+    .navbar {
+      background-color: #1e3a8a; /* Deep professional blue */
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    .navbar h1 {
+      font-size: 2rem; /* Larger font size for better visibility */
+      margin: 0;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown button {
+      padding: 0.5rem 1rem;
+      background-color: #2563eb; /* Bright blue for dropdown button */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .dropdown button:hover {
+      background-color: #1d4ed8; /* Darker blue on hover */
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: white;
+      min-width: 150px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: #333;
+      padding: 0.8rem 1rem;
+      text-decoration: none;
+      display: block;
+      font-size: 1rem;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f0f4f8;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dashboard-container {
+      max-width: 90%; /* Extend the container to take up more space */
+      margin: 2rem auto;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+    }
+
+    .account-info {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #e5eaf5; /* Subtle light blue for account info background */
+    }
+
+    .account-info h2 {
+      font-size: 2rem; /* Larger font size for section title */
+      margin-bottom: 1rem;
+      color: #1e3a8a; /* Deep professional blue */
+    }
+
+    .account-info p {
+      margin: 0.5rem 0;
+      font-size: 1.5rem; /* Larger font size for better readability */
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .actions form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .actions input {
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1.2rem; /* Larger input font size */
+    }
+
+    .actions button {
+      padding: 1rem;
+      background-color: #2563eb; /* Bright blue for buttons */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2rem; /* Larger button font size */
+      cursor: pointer;
+    }
+
+    .actions button:hover {
+      background-color: #1d4ed8; /* Darker blue on hover */
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to your Dashboard!</h1>
+  <!-- Navbar -->
+  <div class="navbar">
+    <h1>Hi, {{ user.name }}!</h1>
+    <div class="dropdown">
+      <button>Menu</button>
+      <div class="dropdown-content">
+        <a href="/logout">Logout</a>
+        <form method="POST" action="/close_account" onsubmit="return confirm('Are you sure you want to close your account? This action cannot be undone.');">
+          <button type="submit" style="background: none; border: none; color: #333; padding: 0.8rem 1rem; text-align: left; width: 100%; cursor: pointer;">Close Account</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard Content -->
+  <div class="dashboard-container">
+    <!-- Account Info -->
+    <div class="account-info">
+      <h2>Checking Account</h2>
+      <p><strong>Account Number:</strong> {{ user.account_num }}</p>
+      <p><strong>Account Balance:</strong> ${{ user.balance }}</p>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions">
+      <form method="POST" action="/deposit">
+        <label for="deposit">Deposit Amount</label>
+        <input type="number" id="deposit" name="amount" placeholder="Enter deposit amount" required />
+        <button type="submit">Deposit</button>
+      </form>
+
+      <form method="POST" action="/withdraw">
+        <label for="withdraw">Withdrawal Amount</label>
+        <input type="number" id="withdraw" name="amount" placeholder="Enter withdrawal amount" required />
+        <button type="submit">Withdraw</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function confirmCloseAccount() {
+      const confirmation = confirm("Are you sure you want to close your account? This action cannot be undone.");
+      if (confirmation) {
+        // Redirect to the close account route
+        window.location.href = "/close_account";
+      }
+    }
+  </script>
 </body>
 </html>

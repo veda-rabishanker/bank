@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Texas Veda Financial</title>
+  <title>Sign Up</title>
   <style>
     * {
       box-sizing: border-box;
@@ -60,6 +60,18 @@
       cursor: pointer;
     }
 
+    form select {
+        width: 100%;
+        padding: 0.8rem;
+        margin: 0.5rem 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        background-color: white;
+        font-size: 1rem;
+        font-family: 'Segoe UI', sans-serif;
+        color: #333; /* Matches the text color of the input fields */
+    }
+
     .right {
       background: url('https://www.robgreebonphotography.com/images/xl/Austin-Texas-Skyline-Autumn-Sunset-3.jpg') no-repeat center center;
       background-size: 315%;
@@ -69,46 +81,49 @@
       text-align: center;
       padding: 2rem;
       display: flex;
-      align-items: center;     /* or flex-start if you want it left-aligned */
-      justify-content: flex-start;  /* moves content to the top */
-      padding-top: 8rem; 
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 8rem;
     }
 
-
     .right p {
-        font-size: 2.2rem;
-        max-width: 700px;
-        font-family: 'Segoe UI', sans-serif;
-        font-weight: 600;
-        color: #ffffff;
-        letter-spacing: 1.5px;
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-        padding: 0.5rem 1rem;
+      font-size: 2.2rem;
+      max-width: 700px;
+      font-family: 'Segoe UI', sans-serif;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 1.5px;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+      padding: 0.5rem 1rem;
     }
   </style>
 </head>
 <body>
   <div class="left">
     <div class="form-container">
-      <h1>Welcome to Texas Veda Financial</h1>
-      <h2>Sign In</h2>
-      <form method="POST" action = "/dashboard">
+      <h1>Sign Up for Texas Veda Financial</h1>
+      {% if error %}
+        <p style="color: red;">{{ error }}</p>
+      {% endif %}
+      <form method="POST" action="/signup">
         <input type="text" name="account_num" placeholder="Account Number" required />
-        <input type="pin" name="pin" placeholder="Pin" required />
-        <p>Don't have an account? <a href="/signup">Sign up here</a>.</p>
-        <button type="submit">Sign In</button>
+        <input type="password" name="pin" placeholder="Pin" required />
+        <input type="text" name="name" placeholder="Full Name" required />
+        <input type="number" name="age" placeholder="Age" required />
+        <select name="gender" required>
+          <option value="" disabled selected>Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="text" name="phone" placeholder="Phone Number" required />
+        <button type="submit">Sign Up</button>
       </form>
     </div>
   </div>
   <div class="right">
     <p>SMART, SIMPLE, SECURE</p>
   </div>
-  <script>
-    // Check if the server passed an error message
-    const errorMessage = "{{ error }}";
-    if (errorMessage) {
-      alert(errorMessage); // Show an alert with the error message
-    }
-  </script>
 </body>
 </html>
